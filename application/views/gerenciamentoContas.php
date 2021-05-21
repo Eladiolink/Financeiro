@@ -10,31 +10,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-<nav class="navbar bg-primary navbar-expand-lg navbar-dark ">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse mr-auto" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="/">Contas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/Contas/gerenciamentoContas">Gerenciamento de Contas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Contas/transferencia">Trânferencia</a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php $this->load->view("partials/nav") ?>
 
 <main class="container mt-4">
-<table class="table">
+
+<a class="btn btn-success" href="/Contas/adicionarCliente">Adicionar Cliente</a>
+
+<table class="table mt-2">
   <thead class="thead-dark bg-primary text-white">
     <tr>
       <th scope="col">#</th>
@@ -46,20 +28,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
   </thead>
   <tbody>
+    <?php foreach($clientes as $index => $cliente){?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><?php echo $index+1 ?></th>
+      <td><?php echo $cliente->nome ?></td>
+      <td><?php echo $cliente->nome_banco?></td>
+      <td><?php echo $cliente->conta?></td>
 	    <td class="actions">
-        <a class="btn bg-warning text-white" href="">
+        <a class="btn bg-warning text-white" href="<?php echo '/Contas/editarCliente/'.$cliente->id ?>">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
           </svg>
         </a>
 
-        <form>
+        <form action="/ContasBack/delete" method="POST">
+          <input type="hidden" value="<?php echo $cliente->id ?>" name="id">
           <button class="btn bg-danger text-white" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -69,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
       </td>
     </tr>
+    <?php } ?>
   </tbody>
 </table>
 
