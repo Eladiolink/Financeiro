@@ -10,28 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-<nav class="navbar bg-primary navbar-expand-lg navbar-dark ">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse mr-auto" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Contas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Contas/gerenciamentoContas">Gerenciamento de Contas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Contas/transferencia">Trânferencia</a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php $this->load->view("partials/nav") ?>
 
 <main class="container mt-4">
 <table class="table">
@@ -46,14 +25,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
   </thead>
   <tbody>
+    <?php foreach($clientes as $index=>$cliente){ ?>
     <tr>
-      <th scope="row">1</th>
-      <td><a class="" href="/Contas/contaUser/1">Mark</a></td>
-      <td>Otto</td>
-      <td>@mdo</td>
-	  <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><?php echo $index+1 ?></th>
+      <td><a class="" href="/Contas/contaUser/<?php echo $cliente->id ?>"><?php echo $cliente->nome ?></a></td>
+      <td><?php echo $cliente->nome_banco ?></td>
+      <td><?php echo $cliente->agencia ?></td>
+	  <td><?php echo $cliente->conta ?></td>
+      <td>R$ <?php echo $cliente->saldo ?>,00</td>
     </tr>
+    <?php } ?>
   </tbody>
 </table>
 </main>

@@ -74,12 +74,14 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	
+	//'dsn'	=> ':host=localhost;port=5432;dbname=database_name',
+	'dsn'	=> 'mysql:dbname=Banco;host=localhost',
 	'hostname' => '172.17.0.2',
 	'username' => 'root',
-	'password' => 'user123',
-	'database' => 'Banco',
-	'dbdriver' => 'mysqli',
+	'password' => '',
+	'database' => 'banco',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
