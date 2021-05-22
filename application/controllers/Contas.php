@@ -29,7 +29,14 @@ class Contas extends CI_Controller {
 	public function contaUser()
 	{   
 		$id = $this->uri->segment(3);
-		$this->load->view("contaUser",["user"=>$id]);
+		$cliente=$this->Contas->getCliente($id)[0];
+		if($cliente){
+			$this->load->view("contaUser",["cliente"=>$cliente]);
+		}else{
+			$this->load->helper('url');
+			redirect('/', 'refresh');
+		}
+		
 
 	}
     
@@ -41,10 +48,10 @@ class Contas extends CI_Controller {
 	public function editarCliente()
 	{   
 		$id = $this->uri->segment(3);
-        $cliente=$this->Contas->getCliente($id);
+        $cliente=$this->Contas->getCliente($id)[0];
 
         if($cliente){
-			$this->load->view("editarCliente",["cliente"=>$cliente[0]]);
+			$this->load->view("editarCliente",["cliente"=>$cliente]);
 		}else{
                 $this->load->helper('url');
                 redirect('/Contas/gerenciamentoContas', 'refresh');
