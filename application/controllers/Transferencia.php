@@ -41,13 +41,13 @@ class Transferencia extends CI_Controller {
     } 
 	
     public function getTransferencias(){
-        $id = $this->input->post("id",TRUE);
+       $id = $this->input->post("id",TRUE);
         $dataStart = $this->input->post("dataStart",TRUE);
-        $dataEnd = $this->input->post("dataEnd",TRUE);
-
+       $dataEnd = $this->input->post("dataEnd",TRUE);
         $transferencia=$this->Transferencia->getTransferenciaDate($id,$dataStart,$dataEnd);
         
         print_r(json_encode($transferencia));
+
     }
 
     public function edit()

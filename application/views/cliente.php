@@ -63,9 +63,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </div>
     
     <div class="d-flex flex-row col-6 mx-auto mt-4 mb-2">
+      <input type="hidden" id="id" value="<?php echo $cliente->id ?>">
       <input class="form-control" type="date" value="" id="data-one">
       <input class="form-control" type="date" value="" id="date-two">
-      <button id="data" class="btn btn-success">Submit</button>
+      <button id="data" onclick="getTransferencias()" class="btn btn-success">Enviar</button>
     </div>
     <!-- ChartJS -->
 
@@ -81,7 +82,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <th scope="col">Data</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="dados">
       <?php foreach($transferencias as $index=>$transferencia){ ?>
         <tr>
           <th scope="row"><?php echo $index+1 ?></th>
