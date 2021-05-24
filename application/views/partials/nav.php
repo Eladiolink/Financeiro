@@ -13,7 +13,7 @@
           <a class="nav-link" href="/Contas/gerenciamentoContas">Gerenciamento de Contas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/Contas/transferencia">Trânferencia</a>
+          <a class="nav-link" href="/Transferencia/">Trânferencia</a>
         </li>
 
       </ul>

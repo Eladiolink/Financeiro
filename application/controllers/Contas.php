@@ -7,6 +7,8 @@ class Contas extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("Contas_model","Contas");
+		$this->load->model("Transferencia_model","Transferencia");
+
 	}
 
 	public function index()
@@ -21,17 +23,13 @@ class Contas extends CI_Controller {
 		$this->load->view("gerenciamentoContas",["clientes"=>$clientes]);
 	}
 
-	public function transferencia()
-	{
-		$this->load->view("transferencia");
-	}
-
-	public function contaUser()
+	public function cliente()
 	{   
 		$id = $this->uri->segment(3);
 		$cliente=$this->Contas->getCliente($id)[0];
+		$transferencia=$this->Transferencia->getTransferencia($id);
 		if($cliente){
-			$this->load->view("contaUser",["cliente"=>$cliente]);
+			$this->load->view("cliente",["cliente"=>$cliente,"transferencias"=>$transferencia]);
 		}else{
 			$this->load->helper('url');
 			redirect('/', 'refresh');

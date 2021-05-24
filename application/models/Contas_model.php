@@ -27,6 +27,14 @@ class Contas_model extends CI_Model {
       $cliente=$this->db->get_where('contas', array('id' => $id));
       return $cliente->result();
     }
+    
+    public function getSaldo($id)
+    {
+     $this->db->select('saldo'); 
+     $saldo=$this->db->get_where('contas', array('id' => $id));
+    
+     return $saldo->result()[0]->saldo;
+    }
 
     public function updateClinete($values,$id)
     {

@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -19,12 +19,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <h1>
       <?php echo $cliente->nome ?>
     </h1>
-    
+   
     <!-- Informações sobre Conta e banco -->
     <div class="d-flex col-12 flex-column mx-auto flex-lg-row">
-     
+
       <div class="col-lg-6 col-12 d-flex ">
-      <!-- CARD AGÊNCIA -->
+        <!-- CARD AGÊNCIA -->
         <div class="card col-4">
           <h5 class="card-header text-center">Agência</h5>
           <div class="card-body">
@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </div>
 
       <div class="col-lg-6 col-12 d-flex justify-content-end">
-      <!-- CARD BANCO -->
+        <!-- CARD BANCO -->
         <div class="card col-lg-5  col-4">
           <h5 class="card-header text-center">Banco</h5>
           <div class="card-body">
@@ -62,33 +62,46 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     </div>
     
+    <div class="d-flex flex-row col-6 mx-auto mt-4 mb-2">
+      <input class="form-control" type="date" value="" id="data-one">
+      <input class="form-control" type="date" value="" id="date-two">
+      <button id="data" class="btn btn-success">Submit</button>
+    </div>
     <!-- ChartJS -->
-    
-    <canvas id="myChart" width="400" height="150"></canvas>
 
+    <canvas id="myChart" width="400" height="150"></canvas>
     <!-- Tabela de Trânsferencias -->
+    <h1 class="display-4 mt-5">Trânsferencias</h1>
     <table class="table mt-2">
-  <thead class="thead-dark bg-primary text-white">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Cliente</th>
-      <th scope="col">Nome do Banco</th>
-      <th>Conta</th>
-      <th class="text-center" scope="col">Ações</th>
-	  
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    </tr>
-  </tbody>
-</table>
+      <thead class="thead-dark bg-primary text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Destinatário</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Data</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach($transferencias as $index=>$transferencia){ ?>
+        <tr>
+          <th scope="row"><?php echo $index+1 ?></th>
+          <td><?php echo $transferencia->nome ?></td>
+          <td>R$ <?php echo $transferencia->valor ?>,00</td>
+          <td><?php echo $transferencia->data ?></td>
+        </tr>
+      <?php } ?>
+      </tbody>
+    </table>
   </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <!-- ChartJS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
-
+<!-- JQUERY CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Arquivo de Manipulação da DOM JS -->
+<script src="<?php echo base_url("/assets/js/cliente.js") ?>"></script>
 <!-- Arquivo JS para manipulação do ChartJS -->
 <script src="<?php echo base_url("/assets/js/chartJS.js") ?>"></script>
+
 </html>
