@@ -16,6 +16,10 @@
           <a class="nav-link" href="/Transferencia/">Trânferencia</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="/Users/destroy">Logout</a>
+        </li>
+
       </ul>
     </div>
   </div>

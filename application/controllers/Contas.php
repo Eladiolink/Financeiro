@@ -8,7 +8,11 @@ class Contas extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Contas_model","Contas");
 		$this->load->model("Transferencia_model","Transferencia");
-
+	
+		if(!isset($_SESSION['user'])){
+            $this->load->helper('url');
+            redirect('/Users', 'refresh');
+        }
 	}
 
 	public function index()

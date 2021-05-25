@@ -7,6 +7,10 @@ class ContasBack extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("Contas_model","Contas");
+        if(!isset($_SESSION['user'])){
+            $this->load->helper('url');
+            redirect('/Users', 'refresh');
+        }
 	}
 
 	public function add()
