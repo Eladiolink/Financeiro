@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <main class="container mt-4">
     
-    <form class="col-8 mx-auto" action="/ContasBack/edit" method="POST">
+    <form class="col-8 mx-auto" action="/Contas/edit" method="POST">
     <h1>Editar Cliente</h1>
     <input type="hidden" value="<?php echo $cliente->id ?>" name="id">
     <div class="form-group">

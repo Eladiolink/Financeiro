@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <main class="container mt-4">
     
-    <form class="col-8 mx-auto" action="/ContasBack/add" method="POST">
+    <form class="col-8 mx-auto" action="/Contas/add" method="POST">
     <h1>Adicionar Cliente</h1>
 
     <div class="form-group">

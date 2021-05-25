@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </svg>
         </a>
 
-        <form action="/ContasBack/delete" method="POST">
+        <form action="/Contas/delete" method="POST">
           <input type="hidden" value="<?php echo $cliente->id ?>" name="id">
           <button class="btn bg-danger text-white" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
