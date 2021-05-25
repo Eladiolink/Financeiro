@@ -87,8 +87,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <tr>
           <th scope="row"><?php echo $index+1 ?></th>
           <td><?php echo $transferencia->nome ?></td>
-          <td>R$ <?php echo $transferencia->valor ?>,00</td>
-          <td><?php echo $transferencia->data ?></td>
+          <td class="values">R$ <?php echo $transferencia->valor ?>,00</td>
+          <td class="data"><?php echo $transferencia->data ?></td>
         </tr>
       <?php } ?>
       </tbody>
