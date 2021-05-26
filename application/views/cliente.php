@@ -14,7 +14,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 
   <?php $this->load->view("partials/nav") ?>
-
   <main class="container mt-4">
     <h1>
       <?php echo $cliente->nome ?>

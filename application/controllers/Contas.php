@@ -18,7 +18,7 @@ class Contas extends CI_Controller {
 	// Views
 
 	public function index()
-	{ 
+	{   
 	    $clientes=$this->Contas->getContas();
 		$this->load->view('index',["clientes"=>$clientes]);
 	}
@@ -32,7 +32,7 @@ class Contas extends CI_Controller {
 	public function cliente()
 	{   
 		$id = $this->uri->segment(3);
-		$cliente=$this->Contas->getCliente($id)[0];
+		$cliente=$this->Contas->getCliente($id);
 		$transferencia=$this->Transferencia->getTransferencia($id);
 		if($cliente){
 			$this->load->view("cliente",["cliente"=>$cliente,"transferencias"=>$transferencia]);
@@ -44,15 +44,31 @@ class Contas extends CI_Controller {
 
 	}
     
+    public function minhaConta()
+    {
+        $id = $this->uri->segment(3);
+        $cliente=$this->Contas->getClienteUser($id);
+		$transferencia=$this->Transferencia->getTransferencia($cliente[0]->id);
+		if($cliente){
+			$this->load->view("minhaConta",["cliente"=>$cliente[0],"transferencias"=>$transferencia]);
+		}else{
+			$this->load->view("minhaConta",["cliente"=>$cliente,"transferencias"=>$transferencia]);
+		}
+    }
+
 	public function adicionarCliente()
 	{
-		$this->load->view("adicionarCliente");
+		if($_SESSION['user']['tipo_user']=='admin'){
+            $this->load->view("adicionarCliente");
+        }else{
+            $this->load->view("adicionarMinhaConta");
+        }
 	}
 	
 	public function editarCliente()
 	{   
 		$id = $this->uri->segment(3);
-        $cliente=$this->Contas->getCliente($id)[0];
+        $cliente=$this->Contas->getCliente($id);
 
         if($cliente){
 			$this->load->view("editarCliente",["cliente"=>$cliente]);
@@ -73,7 +89,9 @@ class Contas extends CI_Controller {
         $agencia=$this->input->post("agencia",TRUE);
         $conta=$this->input->post("conta",TRUE);
         $saldo=$this->input->post("saldo",TRUE);
+        $user=$this->input->post("user",TRUE);
         
+
         if($nome !=null && $cpf !=null && $banco !=null &&  $agencia !=null &&  $conta !=null &&  $saldo !=null){
              $values=[
                  "nome"=>$nome,
@@ -81,7 +99,8 @@ class Contas extends CI_Controller {
                   "nome_banco"=>$banco,
                   "agencia"=>$agencia,
                   "conta"=>$conta,
-                  "saldo"=>$saldo
+                  "saldo"=>$saldo,
+                  "user"=>$user
              ];
              
              if($this->Contas->addConta($values))

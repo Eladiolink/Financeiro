@@ -10,8 +10,8 @@ class Users_model extends CI_Model {
 	}
 
 	public function add($values)
-    {  
-       return $this->db->insert("users",$values);
+    {   
+      return ($this->get($values['email']))?false:$this->db->insert("users",$values);
     }
 
     public function get($email)
@@ -19,7 +19,7 @@ class Users_model extends CI_Model {
         $this->db->select('*'); 
         $user=$this->db->get_where('users', array('email' => $email));
        
-       return $user->result()[0];
+       return ($user->result())?$user->result()[0]:false;
     }
 	
 }

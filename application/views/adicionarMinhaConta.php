@@ -15,9 +15,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <main class="container mt-4">
     
     <form class="col-8 mx-auto" action="/Contas/add" method="POST">
-    <h1>Adicionar Cliente</h1>
+    <h1>Adicionar Minha Conta</h1>
     
-    <input type="hidden" value="<?php echo $_SESSION['user']['id'] ?>">
+    <input type="hidden" name="user" value="<?php echo $_SESSION['user']['id'] ?>">
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome"  name="nome" placeholder="Nome">

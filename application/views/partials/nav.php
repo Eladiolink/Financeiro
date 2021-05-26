@@ -9,12 +9,18 @@
         <li class="nav-item">
           <a class="nav-link " aria-current="page" href="/">Contas</a>
         </li>
+        <?php if($_SESSION['user']['tipo_user']=='user'){?>
+          <li class="nav-item">
+           <a class="nav-link" href="/Contas/minhaConta/<?php echo $_SESSION['user']['id']?>">Minha Conta</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/Transferencia/">Trânferencia</a>
+        </li>
+        <?php }else{?>
         <li class="nav-item">
           <a class="nav-link" href="/Contas/gerenciamentoContas">Gerenciamento de Contas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Transferencia/">Trânferencia</a>
-        </li>
+        <?php } ?>
 
         <li class="nav-item">
           <a class="nav-link" href="/Users/destroy">Logout</a>

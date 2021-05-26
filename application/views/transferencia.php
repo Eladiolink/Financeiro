@@ -18,20 +18,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <form method="POST" action="/Transferencia/add">
       <!-- PROPRIETARIO -->
       <div class="form-group mt-2">
-        <label for="exampleFormControlSelect1">Conta Proprietário</label>
-        <select class="form-control" name="proprietario" id="exampleFormControlSelect1">
-          <?php foreach ($clientes as $cliente) { ?>
-            <option value="<?php echo $cliente->id ?>"><?php echo $cliente->nome ?></option>
-          <?php } ?>
-        </select>
+        <input type="hidden" name="proprietario" value="<?php echo $user_id ?>">
       </div>
 
       <!-- DESTINATARIO -->
       <div class="form-group mt-2">
         <label for="exampleFormControlSelect1">Conta Destinatário</label>
         <select class="form-control" name="destinatario" id="exampleFormControlSelect1">
-        <?php foreach($clientes as $cliente){ ?>        
-          <option  value="<?php echo $cliente->id ?>"><?php echo $cliente->nome ?></option>
+          <?php foreach ($clientes as $cliente) { ?>
+            <option value="<?php echo $cliente->id ?>"><?php echo $cliente->nome ?></option>
           <?php } ?>
         </select>
       </div>
@@ -39,8 +34,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <label for="exampleFormControlInput1">Valor</label>
         <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor">
       </div>
-
-      <button class="btn btn-success mt-2" type="submit">Enviar</button>
+      <?php if ($user_id == null) { ?>
+         <small class="text-danger">Você precisa adicionar sua conta, para fazer essa operação!</small>
+      <? } else { ?>
+        <button class="btn btn-success mt-2" type="submit">Enviar</button>
+      <?php } ?>
     </form>
   </main>
 </body>

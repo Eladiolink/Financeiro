@@ -43,9 +43,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <label for="password">Confirmação de Senha</label>
                 <input type="password" class="form-control" id="password-confirm" placeholder="Confirmação">
             </div>
-            <small id="small" class="form-text text-muted">Não possui uma conta? <a href="">Clique aqui</a> e cadastre-se</small>
             <br>
-            <button type="submit" class="btn btn-success mt-2">Logar</button>
+            <button type="submit" class="btn btn-success mt-2">Cadastrar</button>
         </form>
 
     </main>

@@ -25,7 +25,7 @@ class Transferencia_model extends CI_Model
     }
 
     public function getTransferencia($id)
-    {
+    {   
         $this->db->select(['valor', 'data', 'nome']);
         $this->db->from('transferencia');
         $this->db->where('proprietario',  $id);

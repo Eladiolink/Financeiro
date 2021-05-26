@@ -18,21 +18,27 @@ class Contas_model extends CI_Model {
     {
       
         $this->db->distinct();
+        $this->db->where('user!=',$_SESSION['user']['id']);
         $clientes=$this->db->get('contas');
         return $clientes->result();  
     }
 
     public function getCliente($id)
-    {
+    { 
       $cliente=$this->db->get_where('contas', array('id' => $id));
-      return $cliente->result();
+      return ($cliente)?$cliente->result()[0]:false;
+    }
+
+    public function getClienteUser($idUser)
+    {
+      $cliente=$this->db->get_where('contas', array('user' => $idUser));
+      return ($cliente)?$cliente->result():false;
     }
     
     public function getSaldo($id)
     {
      $this->db->select('saldo'); 
      $saldo=$this->db->get_where('contas', array('id' => $id));
-    
      return $saldo->result()[0]->saldo;
     }
 

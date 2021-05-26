@@ -16,9 +16,14 @@ class Transferencia extends CI_Controller {
 	}
 
     public function index()
-	{   
+	{   $user=$this->Contas->getClienteUser($_SESSION['user']['id']);
         $clientes=$this->Contas->getContas();
-		$this->load->view("transferencia",["clientes"=>$clientes]);
+        if($user!=null){
+            $this->load->view("transferencia",["clientes"=>$clientes,"user_id"=> $user[0]->id]);
+        }else{
+            $this->load->view("transferencia",["clientes"=>$clientes,"user_id"=>null]);
+        }
+		
 	}
 
 	public function add()
@@ -46,9 +51,9 @@ class Transferencia extends CI_Controller {
     } 
 	
     public function getTransferencias(){
-       $id = $this->input->post("id",TRUE);
+        $id = $this->input->post("id",TRUE);
         $dataStart = $this->input->post("dataStart",TRUE);
-       $dataEnd = $this->input->post("dataEnd",TRUE);
+        $dataEnd = $this->input->post("dataEnd",TRUE);
         $transferencia=$this->Transferencia->getTransferenciaDate($id,$dataStart,$dataEnd);
         
         print_r(json_encode($transferencia));

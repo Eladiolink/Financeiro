@@ -15,10 +15,12 @@ class Users extends CI_Controller
     {
         $this->load->view("login");
     }
+    
     public function create()
     {
         $this->load->view("create");
     }
+
     public function login()
     {
         $email = $this->input->post("email", TRUE);
@@ -65,9 +67,11 @@ class Users extends CI_Controller
         ];
 
         if ($this->Users->add($values)) {
-            echo "ok";
+            $this->load->helper('url');
+            redirect('/Users', 'refresh');
         } else {
-            echo "no";
+            $this->load->helper('url');
+            redirect('/Users', 'refresh');
         }
     }
 
