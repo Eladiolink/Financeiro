@@ -34,7 +34,7 @@ class Contas_model extends CI_Model {
       $cliente=$this->db->get_where('contas', array('user' => $idUser));
       return ($cliente)?$cliente->result():false;
     }
-    
+
     public function getSaldo($id)
     {
      $this->db->select('saldo'); 
@@ -49,7 +49,10 @@ class Contas_model extends CI_Model {
     }
 
     public function deleteCliente($id)
-    {
+    { 
+      $this->db->delete( 'transferencia',['destinatario'=>$id]); 
+      $this->db->delete( 'transferencia',['proprietario'=>$id]);
+    
       $this->db->where( 'id' ,  $id ); 
       return $this->db->delete( 'contas' );
     }

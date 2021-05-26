@@ -1,0 +1,49 @@
+html,body{
+    height:100%;
+   
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+}
+
+@media (min-width: 575.98px) { 
+    form {
+        
+        width: 60%;
+    }
+ }
+
+@media (min-width: 767.98px) { 
+    form {
+      
+        width: 50%;
+    }
+}
+
+@media (min-width: 991.98px) { 
+    form {
+       
+        width: 40%;
+    }
+ }
+
+
+@media (min-width: 1199.98px) { 
+    form {
+    
+        width: 30%;
+    }
+}

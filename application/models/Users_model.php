@@ -21,5 +21,15 @@ class Users_model extends CI_Model {
        
        return ($user->result())?$user->result()[0]:false;
     }
-	
+	  
+    public function getUserWithoutAccount()
+    {  
+         $this->db->select(['users.id','users.email']);
+         $this->db->from('users');
+         $this->db->join('contas',  'contas.user = users.id',"left");
+         $this->db->where("contas.user",null);
+         $this->db->where("users.tipo_user !=","admin");
+         $query  = $this->db->get();
+        return ($query)?$query->result():false;
+    }
 }

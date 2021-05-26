@@ -8,6 +8,7 @@ class Contas extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Contas_model","Contas");
 		$this->load->model("Transferencia_model","Transferencia");
+        $this->load->model("Users_model","User");
 	
 		if(!isset($_SESSION['user'])){
             $this->load->helper('url');
@@ -48,18 +49,22 @@ class Contas extends CI_Controller {
     {
         $id = $this->uri->segment(3);
         $cliente=$this->Contas->getClienteUser($id);
-		$transferencia=$this->Transferencia->getTransferencia($cliente[0]->id);
+		
 		if($cliente){
+            $transferencia=$this->Transferencia->getTransferencia($cliente[0]->id);
 			$this->load->view("minhaConta",["cliente"=>$cliente[0],"transferencias"=>$transferencia]);
 		}else{
-			$this->load->view("minhaConta",["cliente"=>$cliente,"transferencias"=>$transferencia]);
+			$this->load->view("minhaConta",["cliente"=>$cliente]);
 		}
     }
 
 	public function adicionarCliente()
-	{
+	{   
+      
+       
 		if($_SESSION['user']['tipo_user']=='admin'){
-            $this->load->view("adicionarCliente");
+            $user = $this->User->getUserWithoutAccount();
+            $this->load->view("adicionarCliente",["users"=>$user]);
         }else{
             $this->load->view("adicionarMinhaConta");
         }
