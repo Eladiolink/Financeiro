@@ -22,12 +22,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <form action="/Users/store" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="EmailHelp" placeholder="Email">
+                <input required type="email" class="form-control" id="email" name="email" aria-describedby="EmailHelp" placeholder="Email">
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div class="">
             <div class="form-group mt-2">
                 <label for="idade">Idade</label>
-                <input type="number" class="form-control" id="idade" name="idade" placeholder="Idade">
+                <input required type="number" class="form-control" id="idade" name="idade" placeholder="Idade">
             </div>
 
             <div class="form-group">
@@ -40,10 +40,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <div class="form-group mt-2">
                 <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" name="senha" placeholder="Senha">
+                <input required type="password" class="form-control" id="password" name="senha" placeholder="Senha">
 
                 <label for="password">Confirmação de Senha</label>
-                <input type="password" class="form-control" id="password-confirm" placeholder="Confirmação">
+                <input required type="password" class="form-control" id="password-confirm" placeholder="Confirmação">
             </div>
             <br>
             <button type="submit" class="btn btn-success mt-2">Cadastrar</button>

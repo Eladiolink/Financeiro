@@ -29,34 +29,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </select>
             </div>
 
-            <input type="hidden" value="<?php echo $_SESSION['user']['id'] ?>">
+            <input required type="hidden" value="<?php echo $_SESSION['user']['id'] ?>">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                <input required type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
             </div>
             <div class="form-group">
                 <label for="nomeBanco">Nome do Banco</label>
-                <input type="text" class="form-control" id="nomeBanco" name="banco" placeholder="Banco">
+                <input required type="text" class="form-control" id="nomeBanco" name="banco" placeholder="Banco">
             </div>
 
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="cpf">
+                <input required type="text" class="form-control" id="cpf" name="cpf" placeholder="cpf">
             </div>
 
             <div class="flex col-12">
                 <label for="agencia col-2">Agência
-                    <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agência">
+                    <input required type="text" class="form-control" id="agencia" name="agencia" placeholder="Agência">
                 </label>
 
                 <label for="conta col-10">Conta
-                    <input type="text" class="form-control" id="conta" name="conta" placeholder="Conta">
+                    <input required type="text" class="form-control" id="conta" name="conta" placeholder="Conta">
                 </label>
             </div>
 
             <div>
                 <label for="saldo">Saldo</label>
-                <input type="number" class="form-control" id="saldo" name="saldo" placeholder="Saldo">
+                <input required type="number" class="form-control" id="saldo" name="saldo" placeholder="Saldo">
             </div>
             <?php if ($users != null) { ?>
                 <button type="submit" class="btn btn-primary mt-2">Enviar</button>

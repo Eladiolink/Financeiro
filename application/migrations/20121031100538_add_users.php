@@ -38,7 +38,6 @@ class  Migration_Add_users  extends  CI_Migration
             'update_at' => array(
                 'type' => 'TIMESTAMP',
                 'null' => FALSE,
-                //DEFAULT
             ),
         ));
         $this->dbforge->add_key('id', TRUE);

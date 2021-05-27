@@ -25,12 +25,12 @@ class Users extends CI_Controller
     {
         $email = $this->input->post("email", TRUE);
         $senha = $this->input->post("senha", TRUE);
-        $user = $this->Users->get($email);
+        $user  =  $this->Users->get($email);
 
         if ($user) {
 
             if (password_verify($senha, $user->senha)) {
-
+               
                 $user = [
                     "user" => [
                         "id" => $user->id,
@@ -47,6 +47,8 @@ class Users extends CI_Controller
                 redirect('/Users', 'refresh');
             }
         } else {
+                $_SESSION['erro'] = 419;
+                $this->session->mark_as_flash("erro");
                 $this->load->helper('url');
                 redirect('/Users', 'refresh');
         }
@@ -59,17 +61,23 @@ class Users extends CI_Controller
         $type_user = $this->input->post("type_user", TRUE);
         $idade = $this->input->post("idade", TRUE);
         $hash = password_hash($senha, PASSWORD_DEFAULT);
+        if($email!=" " ){
+
+        }
         $values = [
             "email" => $email,
             "senha" => $hash,
             "tipo_user" => $type_user,
             "idade" => $idade
         ];
-
         if ($this->Users->add($values)) {
+            $_SESSION['erro'] = 200;
+            $this->session->mark_as_flash("erro");
             $this->load->helper('url');
             redirect('/Users', 'refresh');
         } else {
+            $_SESSION['erro'] = 419;
+            $this->session->mark_as_flash("erro");
             $this->load->helper('url');
             redirect('/Users', 'refresh');
         }

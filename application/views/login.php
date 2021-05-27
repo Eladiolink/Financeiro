@@ -9,7 +9,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <title>Conta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="<?php echo base_url(); ?>/assets/css/index.css" rel="stylesheet">
-    <link href="<?php echo base_url("/assets/css/login.css") ?>" rel="stylesheet"></link> 
+    <link href="<?php echo base_url("/assets/css/login.css") ?>" rel="stylesheet">
+    </link>
 </head>
 
 <body>
@@ -18,7 +19,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <main class="">
 
-        <form  action="/Users/login" method="POST" >
+        <form action="/Users/login" method="POST">
+            <?php if (isset($_SESSION['erro']) && $_SESSION['erro'] == 419) { ?>
+                <div class="text-center"><small id="small" class="form-text text-danger text-center">Email ou senha estão incorretos!</small></div>
+            <? }else if(isset($_SESSION['erro']) && $_SESSION['erro'] == 200){ ?>
+                <div class="text-center"><small id="small" class="form-text text-success text-center">Cadastrado com Sucesso!</small></div>
+            <? } ?>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="EmailHelp" placeholder="Enter email">
@@ -27,7 +33,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <label for="password">Senha</label>
                 <input type="password" class="form-control" id="password" name="senha" placeholder="Senha">
             </div>
-            <small id="small" class="form-text text-muted">Não possui uma conta? <a href="/Users/create">Clique aqui</a> e cadastre-se</small>
+
+            <small id="small" class="form-text text-muted text-center">Não possui uma conta? <a href="/Users/create">Clique aqui</a> e cadastre-se</small>
+
             <br>
             <button type="submit" class="btn btn-success mt-2">Logar</button>
         </form>

@@ -75,12 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	
-	//'dsn'	=> ':host=localhost;port=5432;dbname=database_name',
 	'dsn'	=> 'mysql:dbname=Banco;host=localhost',
-	'hostname' => '172.17.0.2',
+	'hostname' => 'host',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'Banco',
+	'database' => 'dbname',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
